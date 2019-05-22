@@ -111,16 +111,19 @@ public class CadastroClienteController {
 	 	campoCEP.setText(cliente.getCEP());
 	 	campoComplemento.setText(cliente.getComplemento());
 	 	
-	 	if(cliente.getDataDeNascimento()!=null)
-	 		campoDataDeNascimento.setText(cliente.getDataDeNascimento().toString());
+	 	if(cliente.getDataDeNascimento()!= null) {
+			campoDataDeNascimento.setText(cliente.getDataDeNascimento().toString());
+		}
 
 	 	campoNumeroDeRegistro.setText(habilitacao.getNumeroDeRegistro());
 	 	campoCategoria.setText(habilitacao.getCategoria());
 	 	
-	 	if(habilitacao.getDataDeEmissao()!=null)
-	 		campoDataDeEmissao.setText(habilitacao.getDataDeEmissao().toString());
-	 	if(habilitacao.getValidade()!=null)
-	 		campoValidade.setText(habilitacao.getValidade().toString());
+	 	if(habilitacao.getDataDeEmissao()!= null) {
+			campoDataDeEmissao.setText(habilitacao.getDataDeEmissao().toString());
+		}
+	 	if(habilitacao.getValidade()!= null) {
+			campoValidade.setText(habilitacao.getValidade().toString());
+		}
 	}
 	
 }

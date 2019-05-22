@@ -80,8 +80,8 @@
                                           <TextField fx:id="CampoAnoDeFabricacao" layoutX="379.0" layoutY="89.0" />
                                           <Label layoutX="332.0" layoutY="136.0" text="Classe:" />
                                           <TextField fx:id="CampoClasse" layoutX="379.0" layoutY="132.0" />
-                                          <Button fx:id="BotaoBuscarVeiculo" layoutX="615.0" layoutY="81.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="135.0" style="-fx-background-radius: 5px; -fx-border-radius: 5px;" text="Buscar veiculo" />
-                                          <Button fx:id="BotaoCadastrarVeiculo" layoutX="581.0" layoutY="396.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="169.0" style="-fx-background-radius: 5px; -fx-border-radius: 5px;" text="Cadastrar novo veiculo" />
+                                          <Button fx:id="BotaoBuscarVeiculo" layoutX="615.0" layoutY="81.0" mnemonicParsing="false" onMouseClicked="#processarBotaoBuscarVeiculo" prefHeight="40.0" prefWidth="135.0" style="-fx-background-radius: 5px; -fx-border-radius: 5px;" text="Buscar veiculo" />
+                                          <Button fx:id="BotaoCadastrarVeiculo" layoutX="581.0" layoutY="396.0" mnemonicParsing="false" onMouseClicked="#processarBotaoCadastrarNovoVeiculo" prefHeight="66.0" prefWidth="169.0" style="-fx-background-radius: 5px; -fx-border-radius: 5px;" text="Cadastrar novo veiculo" />
                                        </children>
                                     </AnchorPane>
                               </content>

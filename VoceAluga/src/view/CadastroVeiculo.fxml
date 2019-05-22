@@ -10,7 +10,7 @@
       <Label layoutX="155.0" layoutY="52.0" text="Filial:" />
       <Label layoutX="148.0" layoutY="99.0" prefHeight="16.0" prefWidth="52.0" text="Marca:" />
       <TextField fx:id="campoFilial" layoutX="208.0" layoutY="47.0" />
-      <TextField fx:id="campoMarca" layoutX="208.0" layoutY="94.0" />
+      <TextField fx:id="CampoMarca" layoutX="208.0" layoutY="94.0" />
       <Label layoutX="159.0" layoutY="192.0" prefHeight="16.0" prefWidth="34.0" text="Ano:" />
       <TextField fx:id="campoAno" layoutX="207.0" layoutY="187.0" />
       <Label layoutX="483.0" layoutY="94.0" prefHeight="16.0" prefWidth="52.0" text="Chassi:" />
