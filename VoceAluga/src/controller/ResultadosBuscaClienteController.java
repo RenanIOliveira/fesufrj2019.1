@@ -10,7 +10,7 @@ import javafx.scene.control.ListView;
 
 import controller.ScenesManager;
 import model.Cliente;
-import model.dao.CadastroCliente;
+import model.server.CadastroCliente;
 
 
 
@@ -34,16 +34,12 @@ public class ResultadosBuscaClienteController {
 			manager.mostrarTelaInformacoesDoCliente();
 		}
 	}
-	
+
 	@FXML
 	void processarBotaoCancelar(MouseEvent e) throws IOException {
 		manager.mostrarTelaPrincipal();
 	}
-	
 
-	
-	
-	
 	public void initialize() {
 		
 		//gera lista de clientes com nome e cpf e exibe no elemento listaExibidaNaTela
@@ -52,7 +48,7 @@ public class ResultadosBuscaClienteController {
 		ObservableList <String> listaDeNomesDeClientesBuscados = FXCollections.observableArrayList();
 		
 		listaDeClientesBuscados.forEach(cliente ->{
-			listaDeNomesDeClientesBuscados.add(cliente.getNome() +"   "+cliente.getCPFFormatado());
+			listaDeNomesDeClientesBuscados.add(cliente.getNome() +"   "+cliente.getCpf());
 		});
 
 

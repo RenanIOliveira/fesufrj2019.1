@@ -105,7 +105,7 @@ public class ScenesManager {
 		 Parent root;
 		 try {
 			 root = FXMLLoader.load(getClass().getResource("../view/ResultadosBuscaVeiculo.fxml"));
-			 primaryStage.setTitle("Voce Aluga - Busca de Veiculo");
+			 primaryStage.setTitle("Voce Aluga - Cadastrar Veiculo");
 			 primaryStage.setScene(new Scene(root));
 		 } catch (IOException e) {
 			 System.err.println("Nao foi possivel exibir a tela de resultados busca de veiculo");
@@ -114,6 +114,15 @@ public class ScenesManager {
     
 	 }
 	 
-	 
-	 
+	 public void processarBotaoBuscarVeiculo(){
+		 try {
+			 Parent root = FXMLLoader.load(getClass().getResource("../view/ResultadosBuscaVeiculo.fxml"));
+			 primaryStage.setTitle("Voce Aluga - Cadastrar Veiculo");
+			 primaryStage.setScene(new Scene(root));
+		 } catch (IOException e){
+			 System.err.println("Nao foi possivel processar a busca de veiculo");
+			 System.err.println(e.getMessage());
+		 }
+		 
+	 }
 }

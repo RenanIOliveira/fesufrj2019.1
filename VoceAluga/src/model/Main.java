@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import model.dao.MySQLConnector;
 import controller.ScenesManager;
 
 public class Main extends Application {
@@ -14,16 +13,9 @@ public class Main extends Application {
 	
 	@Override
     public void start(Stage primaryStage) throws IOException{
-		MySQLConnector.abrirConexao();
-
-		manager.mostrarTelaDeLogin();
+    	manager.mostrarTelaDeLogin();
+//		manager.mostrarResultadosBuscaCliente();
         ScenesManager.primaryStage.show();
-    }
-	
-	@Override
-    public void stop() {
-        // executed when the application shuts down
-        MySQLConnector.fecharConexao();
     }
 	
 	

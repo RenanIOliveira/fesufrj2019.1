@@ -1,18 +1,18 @@
 package model;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 public class Habilitacao {
   private String numeroDeRegistro;
-  private LocalDate validade;
+  private Date validade;
   private String categoria;
-  private LocalDate dataDeEmissao;
+  private Date dataDeEmissao;
   
   Habilitacao(){
 	  
   }
   
-  public Habilitacao(String numeroDeRegistro,String categoria,LocalDate validade,LocalDate dataDeEmissao){
+  Habilitacao(String numeroDeRegistro,String categoria,Date validade,Date dataDeEmissao){
 	  this.numeroDeRegistro = numeroDeRegistro;
 	  this.categoria = categoria;
 	  this.validade = validade;
@@ -25,7 +25,7 @@ public class Habilitacao {
 	  return this.numeroDeRegistro;
   }
   
-  public LocalDate getValidade() {
+  public Date getValidade() {
 	  return this.validade;
   }
   
@@ -33,7 +33,7 @@ public class Habilitacao {
 	  return this.categoria;
   }
   
-  public LocalDate getDataDeEmissao() {
+  public Date getDataDeEmissao() {
 	  return this.dataDeEmissao;
   }
   

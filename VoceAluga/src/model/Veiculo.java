@@ -9,6 +9,7 @@ public class Veiculo {
 	private String chassi;
 	private char classe;
 	private int anoDeFabricacao;
+	private int tempoEmAnos;
 	private float quilometragem;
 	private boolean precisaManutencao;
 	/**
@@ -56,19 +57,11 @@ public class Veiculo {
 	public String getFilial() {
 		return this.filial;
 	}
-
-	public void setFilial(String filial) {
-		this.filial = filial;
-	}
 	/**
 	 * @return a marca do veiculo
 	 */
 	public String getMarca() {
 		return this.marca;
-	}
-
-	public void setMarca(String marca) {
-		this.marca = marca;
 	}
 	/**
 	 * @return o modelo do veiculo
@@ -76,19 +69,11 @@ public class Veiculo {
 	public String getModelo() {
 		return this.modelo;
 	}
-
-	public void setModelo(String modelo) {
-		this.modelo = modelo;
-	}
 	/**
 	 * @return a placa do veiculo
 	 */
 	public String getPlaca() {
 		return this.placa;
-	}
-
-	public void setPlaca(String placa) {
-		this.placa = placa;
 	}
 	/**
 	 * @return o chassi do veiculo
@@ -96,39 +81,29 @@ public class Veiculo {
 	public String getChassi() {
 		return this.chassi;
 	}
-
-	public void setChassi(String chassi) {
-		this.chassi = chassi;
-	}
 	/**
 	 * @return a classe do veiculo
 	 */
 	public char getClasse() {
 		return this.classe;
 	}
-
-	public void setClasse(char classe) {
-		this.classe = classe;
-	}
 	/**
 	 * @return o ano de fabricacao do veiculo
 	 */
 	public int getAnoDeFabricacao() {
 		return this.anoDeFabricacao;
-	}
-
-	public void setAnoDeFabricacao(int ano) {
-		this.anoDeFabricacao = ano;
+	}	
+	/**
+	 * @return o tempo em anos do veiculo
+	 */
+	public int getTempoEmAnos() {
+		return tempoEmAnos;
 	}
 	/**
 	 * @return a quilometragem do veiculo
 	 */
 	public float getQuilometragem() {
 		return quilometragem;
-	}
-
-	public void setQuilometragem(long quilometragem) {
-		this.quilometragem = quilometragem;
 	}
 	/**
 	 * @return verdadeiro se o veiculo precisa de manutencao, falso caso contrario

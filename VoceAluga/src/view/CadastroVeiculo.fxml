@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CadastroClienteController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CadastroVeiculoController">
    <children>
       <Label layoutX="155.0" layoutY="52.0" text="Filial:" />
       <Label layoutX="148.0" layoutY="99.0" prefHeight="16.0" prefWidth="52.0" text="Marca:" />
@@ -17,7 +17,7 @@
       <TextField fx:id="campoChassi" layoutX="540.0" layoutY="89.0" />
       <Label layoutX="475.0" layoutY="143.0" prefHeight="16.0" prefWidth="52.0" text="Classe:" />
       <TextField fx:id="campoClasse" layoutX="540.0" layoutY="138.0" />
-      <Button layoutX="435.0" layoutY="537.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="99.0" style="-fx-background-radius: 5px; -fx-border-radius: 5px;" text="Confirmar" />
+      <Button fx:id="BotaoConfirmar" layoutX="435.0" layoutY="537.0" mnemonicParsing="false" onMouseClicked="#processarBotaoConfirmar" prefHeight="34.0" prefWidth="99.0" style="-fx-background-radius: 5px; -fx-border-radius: 5px;" text="Confirmar" />
       <Button fx:id="BotaoCancelar" layoutX="284.0" layoutY="537.0" mnemonicParsing="false" onMouseClicked="#processarBotaoCancelar" prefHeight="34.0" prefWidth="99.0" style="-fx-background-radius: 5px; -fx-border-radius: 5px;" text="Cancelar" />
       <Label layoutX="486.0" layoutY="50.0" prefHeight="16.0" prefWidth="41.0" text="Placa:" />
       <TextField fx:id="campoPlaca" layoutX="540.0" layoutY="45.0" />

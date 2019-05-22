@@ -10,7 +10,7 @@ import javafx.scene.input.MouseEvent;
 
 import controller.ScenesManager;
 import model.Veiculo;
-import model.dao.CadastroVeiculo;
+import model.server.CadastroVeiculo;
 
 public class ResultadosBuscaVeiculoController {
 	ScenesManager manager = new ScenesManager();
@@ -38,7 +38,7 @@ public class ResultadosBuscaVeiculoController {
 	
 	public void initialize() {
 		
-		//gera lista de veiculos com ID e Chassie exibe no elemento listaExibidaNaTela
+		//gera lista de veiculos com ID e Chassi e exibe no elemento listaExibidaNaTela
 		
 		listaDeVeiculosBuscados.addAll(CadastroVeiculo.getVeiculosBuscados());
 		ObservableList <String> listaDeNomesDeVeiculosBuscados = FXCollections.observableArrayList();

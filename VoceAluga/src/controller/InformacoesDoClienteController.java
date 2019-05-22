@@ -1,18 +1,13 @@
 package controller;
 
-
 import java.io.IOException;
-import java.util.Optional;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.ButtonType;
 import javafx.scene.input.MouseEvent;
 import model.Cliente;
 import model.Habilitacao;
-import model.dao.CadastroCliente;
+import model.server.CadastroCliente;
 
 public class InformacoesDoClienteController {
 	ScenesManager manager = new ScenesManager();
@@ -83,76 +78,44 @@ public class InformacoesDoClienteController {
 	
 	@FXML 
 	public void processarBotaoDeletar(MouseEvent e) throws IOException{
-		 Alert alert = new Alert(AlertType.CONFIRMATION);
-		 alert.setTitle("Deletar Dados Do Cliente");
-		 alert.setHeaderText("Atenção, essa operação é irreversível!");
-		 alert.setContentText("Deseja Continuar?");
-
-		 Optional<ButtonType> result = alert.showAndWait();
-		 if (result.get() == ButtonType.OK){
-		    if(CadastroCliente.deletarCliente(CadastroCliente.getClienteAtual().getCPF())){;
-		    	mostrarMensagemDeSucesso("Cliente deletado com sucesso");
-		    	manager.mostrarTelaPrincipal();
-		    }
-		    else{
-		    	mostrarMensagemDeErro("Não foi possível deletar o cliente");
-		    }
-		    
-	    } 
+		
 	}
-
-	  public void mostrarMensagemDeSucesso(String mensagem) {
-	    	Alert alert = new Alert(AlertType.INFORMATION);
-	    	alert.setTitle("");
-	    	alert.setHeaderText(mensagem);
-	    	alert.setContentText("");
-	    	alert.showAndWait();
-	    }
-	  public void mostrarMensagemDeErro(String mensagem) {
-	    	Alert alert = new Alert(AlertType.ERROR);
-	    	alert.setTitle("");
-	    	alert.setHeaderText(mensagem);
-	    	alert.setContentText("");
-	    	alert.showAndWait();
-	    }
-	
 	
 	public void initialize() {
 	 	Cliente cliente = CadastroCliente.getClienteAtual();
 	 	
-	 	preencherLabelsComDadosDoCliente(cliente);
+	 	preencherLabelsComDadosDoCliente(cliente);	
+		 
 	}
 	
 	private void preencherLabelsComDadosDoCliente(Cliente cliente) {
 		Habilitacao habilitacao = cliente.getHabilitacao();
 		
 		
-		if(cliente.getNome()!=null)labelNome.setText(cliente.getNome());
-		if(cliente.getCPF()!=null)labelCPF.setText(cliente.getCPFFormatado());
+		labelNome.setText(cliente.getNome());
+	 	labelCPF.setText(cliente.getCpf());
+	 	labelPais.setText(cliente.getPais());
+	 	labelEstado.setText(cliente.getEstado());
+	 	labelCidade.setText(cliente.getCidade());
+	 	labelPassaporte.setText(cliente.getPassaporte());
+	 	labelBairro.setText(cliente.getBairro());
+	 	labelTelefone.setText(cliente.getTelefone());
+	 	labelRua.setText(cliente.getRua());
+	 	labelEmail.setText(cliente.getEmail());
+	 	labelNumero.setText(cliente.getNumero());
+	 	labelCEP.setText(cliente.getCEP());
+	 	labelComplemento.setText(cliente.getComplemento());
 	 	
-		if(cliente.getPais()!=null)labelPais.setText(cliente.getPais());
-		if(cliente.getEstado()!=null)labelEstado.setText(cliente.getEstado());
-		if(cliente.getCidade()!=null)labelCidade.setText(cliente.getCidade());
-		if(cliente.getPassaporte()!=null)labelPassaporte.setText(cliente.getPassaporte());
-		if(cliente.getBairro()!=null)labelBairro.setText(cliente.getBairro());
-		if(cliente.getTelefone()!=null)labelTelefone.setText(cliente.getTelefoneFormatado());
-		if(cliente.getRua()!=null)labelRua.setText(cliente.getRua());
-		if(cliente.getEmail()!=null)labelEmail.setText(cliente.getEmail());
-		if(cliente.getNumero()!=null)labelNumero.setText(cliente.getNumero());
-		if(cliente.getCEP()!=null)labelCEP.setText(cliente.getCEPFormatado());
-		if(cliente.getComplemento()!=null)labelComplemento.setText(cliente.getComplemento());
 	 	if(cliente.getDataDeNascimento()!=null)
 	 		labelDataDeNascimento.setText(cliente.getDataDeNascimento().toString());
 
-	 	if(cliente.getHabilitacao()!=null){
-		 	labelNumeroDeRegistro.setText(habilitacao.getNumeroDeRegistro());
-		 	labelCategoria.setText(habilitacao.getCategoria());
-		 	if(habilitacao.getDataDeEmissao()!=null)
-		 		labelDataDeEmissao.setText(habilitacao.getDataDeEmissao().toString());
-		 	if(habilitacao.getValidade()!=null)
+	 	labelNumeroDeRegistro.setText(habilitacao.getNumeroDeRegistro());
+	 	labelCategoria.setText(habilitacao.getCategoria());
+	 	
+	 	if(habilitacao.getDataDeEmissao()!=null)
+	 		labelDataDeEmissao.setText(habilitacao.getDataDeEmissao().toString());
+	 	if(habilitacao.getValidade()!=null)
 	 		labelValidade.setText(habilitacao.getValidade().toString());
-	 	}
-	 
 	}
 	
 

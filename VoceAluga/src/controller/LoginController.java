@@ -1,18 +1,17 @@
 package controller;
 
+import model.server.ValidadorDeLogin;
 import controller.ScenesManager;
 
 import java.io.IOException;
+
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import model.dao.ValidadorDeLogin;
 
 public class LoginController {
 	ScenesManager manager = new ScenesManager();
@@ -32,19 +31,6 @@ public class LoginController {
        		mostrarErroDeLogin();
        	}
    }
-    
-    @FXML
-    public void onEnter(KeyEvent ae){
-    	if (ae.getCode().equals(KeyCode.ENTER)){
-    		if(ValidadorDeLogin.validarLogin(usuario.getText(),senha.getText())) {
-           		manager.mostrarTelaPrincipal();
-           	}
-           	else {
-           		mostrarErroDeLogin();
-           	}
-        }
-    	
-    }
     
     ///Exibe a caixa de texto contendo mensagem de erro
     public void mostrarErroDeLogin() {
