@@ -26,10 +26,14 @@ public class CadastroCliente {
 			ResultSet rs    = stmt.executeQuery(query);
 			
 			while((rs.next())){
-				Cliente clienteEncontrado= new Cliente(rs.getInt("ID"),rs.getString("nome"),rs.getString("CPF"),rs.getString("passaporte"),
-   			 			rs.getString("email"),rs.getString("telefone"),rs.getString("CEP"),rs.getString("pais"),
-   			 			rs.getString("estado"),rs.getString("cidade"),rs.getString("bairro"),rs.getString("rua"),
-   			 			rs.getString("numero"),rs.getString("complemento"),rs.getDate("dataDeNascimento").toLocalDate());
+				Cliente clienteEncontrado= new Cliente(rs.getString("nome"),
+						rs.getString("CPF"), rs.getString("passaporte"),
+   			 			rs.getString("email"), rs.getString("telefone"),
+						rs.getString("CEP"), rs.getString("pais"),
+   			 			rs.getString("estado"), rs.getString("cidade"),
+						rs.getString("bairro"), rs.getString("rua"),
+   			 			rs.getString("numero"), rs.getString("complemento"),
+						rs.getDate("dataDeNascimento").toLocalDate());
 
 
 		       	 if(buscarHabilitacaoPorCPF(clienteEncontrado.getCPF())){
@@ -227,11 +231,15 @@ public class CadastroCliente {
 		try {
 			Statement stmt  = MySQLConnector.connection.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
-			if(rs.next()){ 
-				Cliente clienteEncontrado = new Cliente(rs.getInt("ID"),rs.getString("nome"),rs.getString("CPF"),rs.getString("passaporte"),
-						rs.getString("email"),rs.getString("telefone"),rs.getString("CEP"),rs.getString("pais"),
-						rs.getString("estado"),rs.getString("cidade"),rs.getString("bairro"),rs.getString("rua"),
-						rs.getString("numero"),rs.getString("complemento"),rs.getDate("dataDeNascimento").toLocalDate());
+			if(rs.next()){
+				Cliente clienteEncontrado = new Cliente(rs.getString("nome"),
+						rs.getString("CPF"), rs.getString("passaporte"),
+						rs.getString("email"), rs.getString("telefone"),
+						rs.getString("CEP"),rs.getString("pais"),
+						rs.getString("estado"), rs.getString("cidade"),
+						rs.getString("bairro"), rs.getString("rua"),
+						rs.getString("numero"), rs.getString("complemento"),
+						rs.getDate("dataDeNascimento").toLocalDate());
 				
 				 if(buscarHabilitacaoPorCPF(clienteEncontrado.getCPF())){
 		       		 clienteEncontrado.setHabilitacao(CadastroHabilitacao.habilitacaoAtual);
@@ -257,10 +265,14 @@ public class CadastroCliente {
 			Statement stmt  = MySQLConnector.connection.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
 			if(rs.next()){
-				Cliente clienteEncontrado = new Cliente(rs.getInt("ID"),rs.getString("nome"),rs.getString("CPF"),rs.getString("passaporte"),
-						rs.getString("email"),rs.getString("telefone"),rs.getString("CEP"),rs.getString("pais"),
-						rs.getString("estado"),rs.getString("cidade"),rs.getString("bairro"),rs.getString("rua"),
-						rs.getString("numero"),rs.getString("complemento"),rs.getDate("dataDeNascimento").toLocalDate());
+				Cliente clienteEncontrado = new Cliente(rs.getString("nome"),
+						rs.getString("CPF"), rs.getString("passaporte"),
+						rs.getString("email"), rs.getString("telefone"),
+						rs.getString("CEP"),rs.getString("pais"),
+						rs.getString("estado"), rs.getString("cidade"),
+						rs.getString("bairro"), rs.getString("rua"),
+						rs.getString("numero"), rs.getString("complemento"),
+						rs.getDate("dataDeNascimento").toLocalDate());
 				
 				
 				

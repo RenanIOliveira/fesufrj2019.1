@@ -114,6 +114,19 @@ public class ScenesManager {
     
 	 }
 
+	public void mostrarTelaInformacoesDoVeiculo(){
+		Parent root;
+		try {
+			root = FXMLLoader.load(getClass().getResource("../view/InformacoesDoVeiculo.fxml"));
+			primaryStage.setTitle("Voce Aluga - Dados do Veiculo");
+			primaryStage.setScene(new Scene(root));
+		} catch (IOException e) {
+			System.err.println("Nao foi possivel exibir a tela de informacoes do veiculo");
+			System.err.println(e.getMessage());
+		}
+
+	}
+
 
 	public void mostrarTelaInformacoesDoFuncionario() {
 		Parent root;

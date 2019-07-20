@@ -1,16 +1,24 @@
 package model;
 
 public class Veiculo {
-	private Long id;
+	private int id;
 	private String filial;
 	private String chassi;
+	private String RENAVAM;
 	private String placa;
 	private String marca;
 	private String modelo;
 	private Integer anoDeFabricacao;
-	private float quilometragem;
-	private char classe;
-	private boolean precisaManutencao;
+	private Integer quilometragem;
+	private String classe;
+	private String cor;
+	private String manutencaoEmDia;
+	private String informacoesAdicionais;
+
+	// === Aluguel ===
+	private boolean alugado;
+	private Cliente locatario;
+
 	/**
 	 * Construtor.
 	 * @param marca 		a marca do veiculo
@@ -19,153 +27,294 @@ public class Veiculo {
 	 * @param chassi 		o Numero de Identificacao (Chassi) do Veiculo
 	 * @param quilometragem a quilometragem do veiculo
 	 */
-	public Veiculo(String filial, String chassi, String placa, String marca, String modelo, Integer ano, float quilometragem){
+	public Veiculo(int id, String filial, String chassi, String RENAVAM, String placa, String marca,
+				   String modelo, Integer ano, Integer quilometragem, String classe, String cor, String manutencaoEmDia,
+				   String informacoesAdicionais){
+		this.id = id;
 		this.filial = filial;
 		this.chassi = chassi;
+		this.RENAVAM = RENAVAM;
 		this.placa = placa;
 		this.marca = marca;
 		this.modelo = modelo;
 		this.anoDeFabricacao = ano;
 		this.quilometragem = quilometragem;
-		this.precisaManutencao = false;
+		this.classe = classe;
+		this.cor = cor;
+		this.manutencaoEmDia = manutencaoEmDia;
+		this.informacoesAdicionais = informacoesAdicionais;
 	}
 	
-	//================
-	//CONSTRUTOR TESTE
-	public Veiculo(Long id, String marca, String modelo, String placa, String chassi, float quilometragem){
+	//====construtor teste====
+	public Veiculo(int id, String marca, String modelo, String placa, String chassi, Integer quilometragem){
 		this.id = id;
 		this.marca = marca;
 		this.modelo = modelo;
 		this.placa = placa;
 		this.chassi = chassi;
 		this.quilometragem = quilometragem;
-		this.precisaManutencao = false;
 	}
-	//CONSTRUTOR TESTE
-	//================
 
-	public Veiculo(){
-		this.precisaManutencao = false;
-	}
 	/**
-	 * @return o ID do veiculo
+	 * Construtor
+	 * Nao recebe parametro nenhum, apenas cria um Veiculo novo
 	 */
-	public Long getID() {
+	public Veiculo(){
+
+	}
+
+	/**
+	 * @return O ID do veiculo
+	 */
+	public int getId() {
 		return this.id;
 	}
+
 	/**
-	 * @return a filial atual do veiculo
+	 * @return A filial atual do veiculo
 	 */
 	public String getFilial() {
 		return this.filial;
 	}
+
 	/**
-	 * @param filial a filial onde o veiculo esta atualmente
+	 * @param filial A filial onde o veiculo esta atualmente
 	 */
 	public void setFilial(String filial) {
 		this.filial = filial;
 	}
+
 	/**
-	 * @return a marca do veiculo
+	 * @return A marca do veiculo
 	 */
 	public String getMarca() {
 		return this.marca;
 	}
+
 	/**
-	 * @param marca a marca do veiculo
+	 * @param marca A marca do veiculo
 	 */
 	public void setMarca(String marca) {
 		this.marca = marca;
 	}
+
 	/**
-	 * @return o modelo do veiculo
+	 * @return O modelo do veiculo
 	 */
 	public String getModelo() {
 		return this.modelo;
 	}
+
 	/**
-	 * @param modelo o modelo do veiculo
+	 * @param modelo O modelo do veiculo
 	 */
 	public void setModelo(String modelo) {
 		this.modelo = modelo;
 	}
+
 	/**
-	 * @return a placa do veiculo
+	 * @return A placa do veiculo
 	 */
 	public String getPlaca() {
 		return this.placa;
 	}
+
 	/**
-	 * @param placa a placa do veiculo
+	 * @param placa A placa do veiculo
 	 */
 	public void setPlaca(String placa) {
 		this.placa = placa;
 	}
+
 	/**
-	 * @return o chassi do veiculo
+	 * @return O chassi do veiculo
 	 */
 	public String getChassi() {
 		return this.chassi;
 	}
+
 	/**
-	 * @param chassi o numero do chassi do carro
+	 * @param chassi O numero do chassi do carro
 	 */
 	public void setChassi(String chassi) {
 		this.chassi = chassi;
 	}
+
 	/**
-	 * @return a classe do veiculo
+	 * @return O RENAVAM do veiculo
 	 */
-	public char getClasse() {
+	public String getRENAVAM() {
+		return RENAVAM;
+	}
+
+	/**
+	 * @param RENAVAM O RENAVAM do veiculo
+	 */
+	public void setRENAVAM(String RENAVAM) {
+		this.RENAVAM = RENAVAM;
+	}
+
+	/**
+	 * @return A classe do veiculo
+	 */
+	public String getClasse() {
 		return this.classe;
 	}
+
 	/**
-	 * @param classe a classe do veiculo na locadora
+	 * @param classe A classe do veiculo na locadora
 	 */
-	public void setClasse(char classe) {
+	public void setClasse(String classe) {
 		this.classe = classe;
 	}
+
 	/**
-	 * @return o ano de fabricacao do veiculo
+	 * @return O ano de fabricacao do veiculo
 	 */
 	public Integer getAnoDeFabricacao() {
 		return this.anoDeFabricacao;
 	}
+
 	/**
-	 * @param ano o ano em que o veiculo foi fabricado
+	 * @param ano O ano em que o veiculo foi fabricado
 	 */
 	public void setAnoDeFabricacao(Integer ano) {
 		this.anoDeFabricacao = ano;
 	}
+
 	/**
-	 * @return a quilometragem do veiculo
+	 * @return A quilometragem do veiculo
 	 */
-	public float getQuilometragem() {
+	public Integer getQuilometragem() {
 		return quilometragem;
 	}
+
 	/**
-	 * @param quilometragem a quilometragem do veiculo atual do veiculo
+	 * @param quilometragem A quilometragem do veiculo atual
 	 */
-	public void setQuilometragem(long quilometragem) {
+	public void setQuilometragem(Integer quilometragem) {
 		this.quilometragem = quilometragem;
 	}
+
 	/**
-	 * @return verdadeiro se o veiculo precisa de manutencao, falso caso contrario
+	 * @return A cor do veiculo
 	 */
-	public boolean isPrecisaManutencao() {
-		return precisaManutencao;
-	}
-	/**
-	 * @param precisaManutencao booleano que indica se o veiculo precisa de manutencao ou nao
-	 */
-	public void setPrecisaManutencao(boolean precisaManutencao) {
-		this.precisaManutencao = precisaManutencao;
+	public String getCor() {
+		return cor;
 	}
 
-	public static boolean ValidarChassi(String text) {
-		// TODO Auto-generated method stub
-		return false;
+	/**
+	 * @param cor A cor do veiculo
+	 */
+	public void setCor(String cor) {
+		this.cor = cor;
 	}
 
-	
+	/**
+	 * @return Se a manutencao do veiculo esta em dia, retorna String "SIM" ou "NÂO"
+	 */
+	public String getManutencaoEmDia() {
+		return manutencaoEmDia;
+	}
+
+	/**
+	 * @param manutencaoEmDia String que indica se a manutencao do veiculo esta em dia ou nao
+	 */
+	public void setManutencaoEmDia(String manutencaoEmDia) {
+		this.manutencaoEmDia = manutencaoEmDia;
+	}
+
+	/**
+	 * @return As informacoes adicionais do veiculo
+	 */
+	public String getInformacoesAdicionais() {
+		return informacoesAdicionais;
+	}
+
+	/**
+	 * @param informacoesAdicionais Informacoes adicionais que o veiculo pode possuir
+	 */
+	public void setInformacoesAdicionais(String informacoesAdicionais) {
+		this.informacoesAdicionais = informacoesAdicionais;
+	}
+
+	public static boolean ValidarChassi(String chassi) {
+
+		//https://respostas.guj.com.br/41944-validar-chassi-chassi-sempre-invalido
+
+		if (chassi.length() != 17)
+		{
+			return false;
+		}
+
+//		Pattern zeroNoPrimeiroDigito = Pattern.compile ("^0");
+//		Matcher matcherZero  = zeroNoPrimeiroDigito.matcher(chassi);
+//
+//		Pattern espacoNoChassi = Pattern.compile (" ");
+//		Matcher matcherEspaco = espacoNoChassi.matcher(chassi);
+//
+//		Pattern repeticaoMaisDe6Vezes = Pattern.compile ("^.{4,}([0-9A-Z])\\1{5,}");
+//		Matcher matcherRepetir = repeticaoMaisDe6Vezes.matcher(chassi);
+//
+//		Pattern caracteresiIoOqQ = Pattern.compile ("[iIoOqQ]");
+//		Matcher matcherCaract = caracteresiIoOqQ.matcher(chassi);
+//
+//		Pattern ultimos6Numericos = Pattern.compile ("[0-9]{6}$");
+//		Matcher matcherUltimos = ultimos6Numericos.matcher(chassi);
+//
+//		if (matcherZero.find() || matcherEspaco.find() || matcherRepetir.find() || matcherCaract.find() || matcherUltimos.find())
+//		{
+//			return false;
+//		}
+
+		return true;
+	}
+
+	/**
+	 * @return Valor booleano indicando se o veiculo encontra-se alugado ou nao
+	 */
+	public boolean isAlugado() {
+		return alugado;
+	}
+
+	/**
+	 * @param alugado Boolean para setar o valor alugado do veiculo
+	 */
+	public void setAlugado(boolean alugado) {
+		this.alugado = alugado;
+	}
+
+	/**
+	 * @return O cliente que alugou o veiculo
+	 */
+	public Cliente getLocatario() {
+		return locatario;
+	}
+
+	/**
+	 * @return O nome do cliente que alugou o veiculo
+	 */
+	public String getLocatarioNome() {
+		return locatario.getNome();
+	}
+
+	/**
+	 * @return O CPF do cliente que alugou o veiculo
+	 */
+	public String getLocatarioCPF() {
+		return locatario.getCPF();
+	}
+	/**
+	 * @return O numero de registro do cliente que alugou o veiculo
+	 */
+	public String getLocatarioHabilitacao() {
+		return locatario.getHabilitacao().getNumeroDeRegistro();
+	}
+
+	/**
+	 * @param locatario O Cliente que alugou o veiculo
+	 */
+	public void setLocatarioNome(Cliente locatario) {
+		this.locatario = locatario;
+	}
 }

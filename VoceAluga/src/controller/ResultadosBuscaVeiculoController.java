@@ -26,8 +26,8 @@ public class ResultadosBuscaVeiculoController {
 		int indexDoVeiculoSelecionado = listaExibidaNaTela.getSelectionModel().getSelectedIndex();
 		
 		if(indexDoVeiculoSelecionado!= -1) {
-			CadastroVeiculo.setveiculoAtual(listaDeVeiculosBuscados.get(indexDoVeiculoSelecionado));
-			manager.mostrarTelaInformacoesDoCliente();
+			CadastroVeiculo.setVeiculoAtual(listaDeVeiculosBuscados.get(indexDoVeiculoSelecionado));
+			manager.mostrarTelaInformacoesDoVeiculo();
 		}
 	}
 	
@@ -38,13 +38,14 @@ public class ResultadosBuscaVeiculoController {
 	
 	public void initialize() {
 		
-		//gera lista de veiculos com ID e Chassie exibe no elemento listaExibidaNaTela
+		//gera lista de veiculos com Modelo, Ano e Placa e exibe no elemento listaExibidaNaTela
 		
 		listaDeVeiculosBuscados.addAll(CadastroVeiculo.getVeiculosBuscados());
 		ObservableList <String> listaDeNomesDeVeiculosBuscados = FXCollections.observableArrayList();
 		
 		listaDeVeiculosBuscados.forEach(veiculo ->{
-			listaDeNomesDeVeiculosBuscados.add(veiculo.getID() +"   "+veiculo.getChassi());
+			listaDeNomesDeVeiculosBuscados.add(veiculo.getMarca() + "   " + veiculo.getModelo() + "   " +
+					veiculo.getAnoDeFabricacao() + "   " + veiculo.getClasse() + "   " + veiculo.getPlaca());
 		});
 
 

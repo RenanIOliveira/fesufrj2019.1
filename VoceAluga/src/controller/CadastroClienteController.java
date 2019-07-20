@@ -234,9 +234,10 @@ public class CadastroClienteController {
 	
 	boolean validarCampos(){
 		
-		if(campoNome.getText()== null || campoDataDeNascimento.getValue()== null || campoCEP.getPlainText().equals("")
-		   || campoPais.getText() == null || campoEstado.getText() == null || campoCidade.getText()== null || campoBairro.getText() ==null
-		   || campoRua.getText() == null || campoNumero.getText()==null){
+		if(campoNome.getText()== null || campoCPF.getPlainText().equals("") || campoDataDeNascimento == null
+				|| campoCEP.getPlainText().equals("") || campoPais.getText() == null || campoEstado.getText() == null
+				|| campoCidade.getText()== null || campoBairro.getText() == null || campoRua.getText() == null
+				|| campoNumero.getText()==null){
 			mostrarErroDeCadastro("Preencha todos os campos obrigatórios");
 			return false;
 		}
@@ -247,8 +248,6 @@ public class CadastroClienteController {
 			mostrarErroDeCadastro("CPF inválido");
 			return false;
 		}
-		
-		
 		
 		if(!camposDaHabilitacaoVazios()){
 			if(campoNumeroDeRegistro.getPlainText().equals("") || campoValidade.getValue() == null || campoDataDeEmissao.getValue() ==null ||

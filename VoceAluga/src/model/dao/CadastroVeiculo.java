@@ -15,27 +15,29 @@ import model.Veiculo;
 public class CadastroVeiculo {
 	private static ArrayList<Veiculo> VeiculosBuscados;
 	private static Veiculo veiculoAtual;
-	
+
 	// CODIGO DE TESTE
 	public static void buscarVeiculos(Veiculo veiculo){
 		VeiculosBuscados = new ArrayList<Veiculo>();
 		//VeiculosBuscados.add(new Veiculo(123456L,"Fiat","Uno","ABC-1234","123456",30000));
 		//VeiculosBuscados.add(new Veiculo(456789L,"Ford","Ka","DEF-5678","456789",0));
-		
+
 		Map<String,String> campos = obterValoresDosCamposDoVeiculo(veiculo);
-		String query = "SELECT * FROM Veiculo";
+		String query = "SELECT * FROM Veiculos";
 		query = adicionarParametrosQueryDeBusca(query,campos);
-		
+
 		try {
 			Statement stmt  = MySQLConnector.connection.createStatement();
 			ResultSet rs    = stmt.executeQuery(query);
 
 			while((rs.next())){
-				Veiculo veiculoEncontrado = new Veiculo(rs.getString("filial"),
-						rs.getString("chassi"),rs.getString("placa"),
-						rs.getString("marca"), rs.getString("modelo"),
-						rs.getInt("ano"),rs.getInt("quilometragem"));
-
+				Veiculo veiculoEncontrado = new Veiculo(rs.getInt("id"), rs.getString("filial"),
+						rs.getString("chassi"), rs.getString("RENAVAM"),
+						rs.getString("placa"), rs.getString("marca"),
+						rs.getString("modelo"), rs.getInt("ano"),
+						rs.getInt("quilometragem"),rs.getString("classe"),
+						rs.getString("cor"), rs.getString("manutencaoEmDia"),
+						rs.getString("infoAdicional"));
 				VeiculosBuscados.add(veiculoEncontrado);
 			}
 
@@ -72,13 +74,13 @@ public class CadastroVeiculo {
 		Map<String, String> campos = new TreeMap<>();
 		if (veiculo.getFilial() != null) campos.put("filial", veiculo.getFilial());
 		if (veiculo.getChassi() != null) campos.put("chassi", veiculo.getChassi());
+		if (veiculo.getRENAVAM() != null) campos.put("RENAVAM", veiculo.getRENAVAM());
 		if (veiculo.getPlaca() != null) campos.put("placa", veiculo.getPlaca());
 		if (veiculo.getMarca() != null) campos.put("marca", veiculo.getMarca());
 		if (veiculo.getModelo() != null) campos.put("modelo", veiculo.getModelo());
-		if (veiculo.getAnoDeFabricacao() != null){
-			campos.put("ano", String.valueOf(veiculo.getAnoDeFabricacao()));
-		}
-		
+		if (veiculo.getAnoDeFabricacao() != null) campos.put("ano", String.valueOf(veiculo.getAnoDeFabricacao()));
+		if (veiculo.getQuilometragem() != null) campos.put("quilometragem", String.valueOf(veiculo.getQuilometragem()));
+		if (veiculo.getInformacoesAdicionais() != null) campos.put("infoAdicional", veiculo.getInformacoesAdicionais());
 
 		return campos;
 	}
@@ -88,7 +90,7 @@ public class CadastroVeiculo {
 		buscarPorChassi(campos.get("chassi"));
 
 
-		String query = "UPDATE Veiculo SET ";
+		String query = "UPDATE Veiculos SET ";
 		query = adicionarParametrosQueryUpdate(query, campos);
 
 		try {
@@ -104,10 +106,10 @@ public class CadastroVeiculo {
 
 	public static String adicionarParametrosQueryUpdate(String query,TreeMap<String,String> campos){
 		boolean algumParametroAdicionado = false;
-		
+
 		for(String key : campos.keySet()){
 
-			if((key.equals("chassi"))&& campos.get(key).equals("")){ //nao permite que CPF ou passaporte vazio seja adicionado
+			if((key.equals("chassi"))&& campos.get(key).equals("")){ //nao permite que Chassi vazio seja adicionado
 				if(algumParametroAdicionado){
 					query = query + ","+key+"=NULL ";
 				}
@@ -137,7 +139,7 @@ public class CadastroVeiculo {
 	}
 
 	public static boolean cadastrarVeiculo(TreeMap<String,String> campos){
-		String query = "INSERT INTO Veiculo ";
+		String query = "INSERT INTO Veiculos ";
 		query = adicionarParametrosQueryDeInsercao(query,campos);
 
 		try {
@@ -193,7 +195,7 @@ public class CadastroVeiculo {
 	}
 
 	public static boolean deletarVeiculo(String Chassi){
-		String query = "DELETE FROM Veiculo WHERE chassi=\""+Chassi+"\";";
+		String query = "DELETE FROM Veiculos WHERE chassi=\""+Chassi+"\";";
 
 		try {
 			Statement stmt  = MySQLConnector.connection.createStatement();
@@ -206,7 +208,7 @@ public class CadastroVeiculo {
 			return false;
 		}
 	}
-	
+
 	public static ArrayList<Veiculo> getVeiculosBuscados() {
 		return VeiculosBuscados;
 	}
@@ -220,11 +222,13 @@ public class CadastroVeiculo {
 			Statement stmt  = MySQLConnector.connection.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
 			if(rs.next()){
-				Veiculo veiculoEncontrado = new Veiculo(
-						rs.getString("filial"),
-						rs.getString("chassi"),rs.getString("placa"),
-						rs.getString("marca"), rs.getString("modelo"),
-						rs.getInt("ano"),rs.getInt("quilometragem"));
+				Veiculo veiculoEncontrado = new Veiculo(rs.getInt("id"), rs.getString("filial"),
+						rs.getString("chassi"), rs.getString("RENAVAM"),
+						rs.getString("placa"), rs.getString("marca"),
+						rs.getString("modelo"), rs.getInt("ano"),
+						rs.getInt("quilometragem"),rs.getString("classe"),
+						rs.getString("cor"), rs.getString("manutencaoEmDia"),
+						rs.getString("infoAdicional"));
 
 				veiculoAtual = veiculoEncontrado;
 				return true;
@@ -246,11 +250,13 @@ public class CadastroVeiculo {
 			Statement stmt  = MySQLConnector.connection.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
 			if(rs.next()){
-				Veiculo veiculoEncontrado = new Veiculo(
-						rs.getString("filial"),
-						rs.getString("chassi"),rs.getString("placa"),
-						rs.getString("marca"), rs.getString("modelo"),
-						rs.getInt("ano"),rs.getInt("quilometragem"));
+				Veiculo veiculoEncontrado = new Veiculo(rs.getInt("id"), rs.getString("filial"),
+						rs.getString("chassi"), rs.getString("RENAVAM"),
+						rs.getString("placa"), rs.getString("marca"),
+						rs.getString("modelo"), rs.getInt("ano"),
+						rs.getInt("quilometragem"),rs.getString("classe"),
+						rs.getString("cor"), rs.getString("manutencaoEmDia"),
+						rs.getString("infoAdicional"));
 
 				veiculoAtual = veiculoEncontrado;
 				return true;
@@ -262,7 +268,7 @@ public class CadastroVeiculo {
 			return false;
 		}
 	}
-	
+
 	public static boolean buscarPorChassi(String Chassi) {
 		veiculoAtual = null;
 
@@ -273,11 +279,13 @@ public class CadastroVeiculo {
 			Statement stmt  = MySQLConnector.connection.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
 			if(rs.next()){
-				Veiculo veiculoEncontrado = new Veiculo(
-						rs.getString("filial"),
-						rs.getString("chassi"),rs.getString("placa"),
-						rs.getString("marca"), rs.getString("modelo"),
-						rs.getInt("ano"),rs.getInt("quilometragem"));
+				Veiculo veiculoEncontrado = new Veiculo(rs.getInt("id"), rs.getString("filial"),
+						rs.getString("chassi"), rs.getString("RENAVAM"),
+						rs.getString("placa"), rs.getString("marca"),
+						rs.getString("modelo"), rs.getInt("ano"),
+						rs.getInt("quilometragem"),rs.getString("classe"),
+						rs.getString("cor"), rs.getString("manutencaoEmDia"),
+						rs.getString("infoAdicional"));
 
 				veiculoAtual = veiculoEncontrado;
 				return true;
@@ -289,12 +297,12 @@ public class CadastroVeiculo {
 			return false;
 		}
 	}
-	
+
 	public static Veiculo getVeiculoAtual() {
 		return veiculoAtual;
 	}
-	
-	public static void setveiculoAtual(Veiculo veiculo) {
+
+	public static void setVeiculoAtual(Veiculo veiculo) {
 		veiculoAtual = veiculo;
 	}
 
